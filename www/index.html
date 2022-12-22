@@ -13,7 +13,7 @@
         var ncmb = new NCMB(applicationKey, clientKey);
 
         let Maindata = ncmb.DataStore("Test");
-        //let key = "score";
+        let key = "gruopName";
         const arr = [];
 
         /*
@@ -41,7 +41,7 @@
                 .then(function(results) {
                     let msg = "";
                     for (let i = 0; i < results.length; i++) {
-                        arr[i] = results[i].get("gruopName");
+                        arr[i] = results[i].get(key);
                         
                     }
                     const set = new Set(arr);
@@ -63,8 +63,22 @@
                 })
         }
 
+        function MenuSearch(){
+            let name = document.getElementById("who").value;
+            console.log(name);
+            Maindata.equalTo(key,name)
+            .fetchAll()
+            .then(function(results){
+                for(let i = 0; i < results.length; i++){
+                    console.log(results[i].get("menuName"));
+                }
+            });
+        }
+
+        
+
         function sortData() {
-            UTdata.order(key, true).fetchAll()
+            UTdata.order(k).fetchAll()
                 .then(function(results) {
                     let msg = "";
                     for (let i = 0; i < results.length; i++) {
@@ -143,12 +157,12 @@
 <body>
     <h1 class="text-light bg-secondary">mbaas update</h1>
     <div>
-        <input type="text" id="data" placeholder="スコア">
-        <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+        <input type="text" id="who" placeholder="名前を入力してください">
+        <a onclick="MenuSearch()" class="btn btn-outline-secondary" role="button">Created Menu</a>
     </div>
     <div>
         <a onclick="NameSearch()" class="btn btn-outline-secondary" role="buton">Name Search</a>
-        <a onclick="sortData()" class="btn btn-outline-primary" role="button">Sort</a>
+        <a onclick="MenuSearch()" class="btn btn-outline-primary" role="button">Created Menu</a>
         <a onclick="countData()" class="btn btn-outline-primary" role="button">Count</a>
         <a onclick="deleteData()" class="btn btn-outline-primary" role="buton">Delete</a>
     </div>
