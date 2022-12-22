@@ -36,7 +36,7 @@
         */
 
 
-        function fetchAll() {
+        function NameSearch() {
             Maindata.fetchAll()
                 .then(function(results) {
                     let msg = "";
@@ -147,7 +147,7 @@
         <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
     </div>
     <div>
-        <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch All</a>
+        <a onclick="NameSearch()" class="btn btn-outline-secondary" role="buton">Name Search</a>
         <a onclick="sortData()" class="btn btn-outline-primary" role="button">Sort</a>
         <a onclick="countData()" class="btn btn-outline-primary" role="button">Count</a>
         <a onclick="deleteData()" class="btn btn-outline-primary" role="buton">Delete</a>
