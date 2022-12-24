@@ -43,12 +43,12 @@
                 .then(function(results) {
                     let msg = "";
                     for (let i = 0; i < results.length; i++) {
-                        arr_name[i] = results[i].get(key);  
+                        arr_name[i] = results[i].get(key);
                     }
                     const set = new Set(arr_name);
                     const newArr_name = [...set];
                     console.log(newArr_name);
-                    for(let n = 0; n < newArr_name.length; n++){
+                    for (let n = 0; n < newArr_name.length; n++) {
                         msg += newArr_name[n] + "</br>";
                     }
                     $("#display").removeClass();
@@ -64,38 +64,38 @@
                 })
         }
 
-        function MenuSearch(){
+        function MenuSearch() {
             let name = document.getElementById("who").value;
             let msg_menu = "";
             console.log(name);
-            Maindata.equalTo(key,name)
-            .fetchAll()
-            .then(function(results){
-                for(let i = 0; i < results.length; i++){
-                    arr_menu[i] = results[i].get(key_menu);
-                }
-                const set = new Set(arr_menu);
-                const newArr_menu = [...set];
-                console.log(newArr_menu);
-                for(let n = 0; n < newArr_menu.length; n++){
-                    if(newArr_menu[n] != "　"){
-                         msg_menu += newArr_menu[n] + "</br>";  
-                    }    
-                }
-                $("#display").removeClass();
-                $("#display").addClass("text-light");
-                $("#display").addClass("bg-primary");
-                $("#display").html(msg_menu);
-                console.log(msg_menu);
-            })
-            .catch(function(error) {
+            Maindata.equalTo(key, name)
+                .fetchAll()
+                .then(function(results) {
+                    for (let i = 0; i < results.length; i++) {
+                        arr_menu[i] = results[i].get(key_menu);
+                    }
+                    const set = new Set(arr_menu);
+                    const newArr_menu = [...set];
+                    console.log(newArr_menu);
+                    for (let n = 0; n < newArr_menu.length; n++) {
+                        if (newArr_menu[n] != "　") {
+                            msg_menu += newArr_menu[n] + "</br>";
+                        }
+                    }
+                    $("#display").removeClass();
+                    $("#display").addClass("text-light");
+                    $("#display").addClass("bg-primary");
+                    $("#display").html(msg_menu);
+                    console.log(msg_menu);
+                })
+                .catch(function(error) {
                     $("#display").removeClass();
                     $("#display").addClass("bg-warning");
                     $("#display").html("delete fail:" + JSON.stringify(error));
                 })
         }
 
-        
+
 
         function sortData() {
             UTdata.order(k).fetchAll()
@@ -182,7 +182,7 @@
     </div>
     <div>
         <a onclick="NameSearch()" class="btn btn-outline-secondary" role="buton">Name Search</a>
-        <a onclick="MenuSearch()" class="btn btn-outline-primary" role="button">Created Menu</a>
+        <a onclick="" class="btn btn-outline-primary" role="button">Empty</a>
         <a onclick="countData()" class="btn btn-outline-primary" role="button">Count</a>
         <a onclick="deleteData()" class="btn btn-outline-primary" role="buton">Delete</a>
     </div>
