@@ -14,7 +14,7 @@
 
         let Maindata = ncmb.DataStore("Test");
         let key = "gruopName";
-        const arr = [];
+        const arr_name = [];
 
         /*
         function enterData() {
@@ -41,14 +41,14 @@
                 .then(function(results) {
                     let msg = "";
                     for (let i = 0; i < results.length; i++) {
-                        arr[i] = results[i].get(key);
+                        arr_name[i] = results[i].get(key);
                         
                     }
-                    const set = new Set(arr);
-                    const newArr = [...set];
-                    console.log(newArr);
-                    for(let n = 0; n < newArr.length; n++){
-                        msg += newArr[n] + "</br>";
+                    const set = new Set(arr_name);
+                    const newArr_name = [...set];
+                    console.log(newArr_name);
+                    for(let n = 0; n < newArr_name.length; n++){
+                        msg += newArr_name[n] + "</br>";
                     }
                     $("#display").removeClass();
                     $("#display").addClass("text-light");
