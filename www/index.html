@@ -95,6 +95,12 @@
                 })
         }
 
+        function DeleteMenu(){
+            let name = document.getElementById("who").value;
+            let menu = document.getElementById("what").value;
+            console.log(name + "," + menu);
+        }
+
 
 
         function sortData() {
@@ -201,7 +207,7 @@
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="メニューを入力"></div>
         <input type="text" id = "what" class="input-text js-input-text" placeholder="メニューを入力">
     </div>
-    <a onclick="" class="btn btn-outline-secondary" role="button">Delete Menu</a>
+    <a onclick="DeleteMenu()" class="btn btn-outline-secondary" role="button">Delete Menu</a>
     <div>
         <a onclick="NameSearch()" class="btn btn-outline-secondary" role="buton">Name Search</a>
         <a onclick="" class="btn btn-outline-primary" role="button">Empty</a>
