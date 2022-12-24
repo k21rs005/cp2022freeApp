@@ -14,7 +14,9 @@
 
         let Maindata = ncmb.DataStore("Test");
         let key = "gruopName";
+        let key_menu = "menuName";
         const arr_name = [];
+        const arr_menu = [];
 
         /*
         function enterData() {
@@ -41,8 +43,7 @@
                 .then(function(results) {
                     let msg = "";
                     for (let i = 0; i < results.length; i++) {
-                        arr_name[i] = results[i].get(key);
-                        
+                        arr_name[i] = results[i].get(key);  
                     }
                     const set = new Set(arr_name);
                     const newArr_name = [...set];
@@ -65,22 +66,27 @@
 
         function MenuSearch(){
             let name = document.getElementById("who").value;
-            let msg = "";
+            let msg_menu = "";
             console.log(name);
             Maindata.equalTo(key,name)
             .fetchAll()
             .then(function(results){
                 for(let i = 0; i < results.length; i++){
-                    console.log(results[i].get("menuName"));
-                    if(results[i].get("menuName") != "　"){
-                        msg += results[i].get("menuName") + "</br>";
-                    }
+                    arr_menu[i] = results[i].get(key_menu);
+                }
+                const set = new Set(arr_menu);
+                const newArr_menu = [...set];
+                console.log(newArr_menu);
+                for(let n = 0; n < newArr_menu.length; n++){
+                    if(newArr_menu[n] != "　"){
+                         msg_menu += newArr_menu[n] + "</br>";  
+                    }    
                 }
                 $("#display").removeClass();
-                    $("#display").addClass("text-light");
-                    $("#display").addClass("bg-primary");
-                    $("#display").html(msg);
-                    console.log(msg);
+                $("#display").addClass("text-light");
+                $("#display").addClass("bg-primary");
+                $("#display").html(msg_menu);
+                console.log(msg_menu);
             })
             .catch(function(error) {
                     $("#display").removeClass();
