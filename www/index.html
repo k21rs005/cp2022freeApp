@@ -65,7 +65,7 @@
         }
 
         function MenuSearch() {
-            let name = document.getElementById("who").value;
+            let name = document.getElementById("Name").value;
             let msg_menu = "";
             console.log(name);
             Maindata.equalTo(key, name)
@@ -171,15 +171,37 @@
                     $("#display").html("update fail:" + JSON.stringify(error));
                 })
         }
+
+        $(document).ready(function() {
+            var $inputText = $('.js-input-text');
+            var $dummyInputText = $('.js-dummy-input-text');
+
+            function updateValue(e) {
+                var value = $(e.target).val();
+                $(e.target).prev($dummyInputText).text(value);
+            }
+
+            $inputText.on('keyup', updateValue);
+            $inputText.on('compositionend', updateValue);
+        });
     </script>
 </head>
 
 <body>
     <h1 class="text-light bg-secondary">mbaas update</h1>
     <div>
-        <input type="text" id="who" placeholder="名前を入力してください">
+        <input type="text" id="Name" placeholder="名前を入力してください">
         <a onclick="MenuSearch()" class="btn btn-outline-secondary" role="button">Created Menu</a>
     </div>
+    <div class="input-text__name">
+        <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
+        <input type="text" id = "who" class="input-text js-input-text" placeholder="名前を入力">
+    </div>
+    <div class="input-text__menu">
+        <div class="input-text__dummy js-dummy-input-text" data-placeholder="メニューを入力"></div>
+        <input type="text" id = "what" class="input-text js-input-text" placeholder="メニューを入力">
+    </div>
+    <a onclick="" class="btn btn-outline-secondary" role="button">Delete Menu</a>
     <div>
         <a onclick="NameSearch()" class="btn btn-outline-secondary" role="buton">Name Search</a>
         <a onclick="" class="btn btn-outline-primary" role="button">Empty</a>
