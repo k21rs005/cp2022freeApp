@@ -95,10 +95,36 @@
                 })
         }
 
+        //作成したメニューの削除
         function DeleteMenu(){
-            let name = document.getElementById("who").value;
-            let menu = document.getElementById("what").value;
+            let name = $("#who").val();
+            let menu = $("#what").val();
             console.log(name + "," + menu);
+            console.log(arr_menu);
+           
+                        //メニューが同じなら消す処理
+                        Maindata
+                        .equalTo(key_menu, menu)
+                        .equalTo(key, name)
+                        .fetchAll()
+                        .then(function(results){
+                            let promises = [];
+                            for(let num = 0; num < results.length; num++){
+                                let object = results[num];
+                                promises.push(object.delete());
+                            }
+                        })
+                        .then(function(results){
+                            console.log("success");
+                        })
+                        .catch(function(error){
+                            alert("mistake");
+                        })
+                    
+                
+                
+            
+            
         }
 
 
