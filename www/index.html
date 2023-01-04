@@ -96,35 +96,35 @@
         }
 
         //作成したメニューの削除
-        function DeleteMenu(){
+        function DeleteMenu() {
             let name = $("#who").val();
             let menu = $("#what").val();
             console.log(name + "," + menu);
             console.log(arr_menu);
-           
-                        //メニューが同じなら消す処理
-                        Maindata
-                        .equalTo(key_menu, menu)
-                        .equalTo(key, name)
-                        .fetchAll()
-                        .then(function(results){
-                            let promises = [];
-                            for(let num = 0; num < results.length; num++){
-                                let object = results[num];
-                                promises.push(object.delete());
-                            }
-                        })
-                        .then(function(results){
-                            console.log("success");
-                        })
-                        .catch(function(error){
-                            alert("mistake");
-                        })
-                    
-                
-                
-            
-            
+
+            //メニューが同じなら消す処理
+            Maindata
+                .equalTo(key_menu, menu)
+                .equalTo(key, name)
+                .fetchAll()
+                .then(function(results) {
+                    let promises = [];
+                    for (let num = 0; num < results.length; num++) {
+                        let object = results[num];
+                        promises.push(object.delete());
+                    }
+                })
+                .then(function(results) {
+                    console.log("success");
+                })
+                .catch(function(error) {
+                    alert("mistake");
+                })
+
+
+
+
+
         }
 
 
@@ -227,11 +227,11 @@
     </div>
     <div class="input-text__name">
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
-        <input type="text" id = "who" class="input-text js-input-text" placeholder="名前を入力">
+        <input type="text" id="who" class="input-text js-input-text" placeholder="名前を入力">
     </div>
     <div class="input-text__menu">
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="メニューを入力"></div>
-        <input type="text" id = "what" class="input-text js-input-text" placeholder="メニューを入力">
+        <input type="text" id="what" class="input-text js-input-text" placeholder="メニューを入力">
     </div>
     <a onclick="DeleteMenu()" class="btn btn-outline-secondary" role="button">Delete Menu</a>
     <div>
