@@ -64,7 +64,7 @@
                 })
         }
 
-        function MenuSearch() {
+        function CreatedMenu() {
             let name = document.getElementById("Name").value;
             let msg_menu = "";
             console.log(name);
@@ -87,6 +87,36 @@
                     $("#display").addClass("bg-primary");
                     $("#display").html(msg_menu);
                     console.log(msg_menu);
+                })
+                .catch(function(error) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-warning");
+                    $("#display").html("delete fail:" + JSON.stringify(error));
+                })
+        }
+
+        //メニューの表示
+        function MenuSearch(){
+            Maindata
+            .fetchAll()
+            .then(function(results){
+            let msg = "";
+                    for (let i = 0; i < results.length; i++) {
+                        arr_menu[i] = results[i].get(key_menu);
+                    }
+                    const set = new Set(arr_menu);
+                    const newArr_menu = [...set];
+                    console.log(newArr_menu);
+                    for (let n = 0; n < newArr_menu.length; n++) {
+                        if(newArr_menu[n] != "　"){
+                            msg += newArr_menu[n] + "</br>";
+                        }
+                    }
+                    $("#display").removeClass();
+                    $("#display").addClass("text-light");
+                    $("#display").addClass("bg-primary");
+                    $("#display").html(msg);
+                    console.log(msg);
                 })
                 .catch(function(error) {
                     $("#display").removeClass();
@@ -223,7 +253,7 @@
     <h1 class="text-light bg-secondary">mbaas update</h1>
     <div>
         <input type="text" id="Name" placeholder="名前を入力してください">
-        <a onclick="MenuSearch()" class="btn btn-outline-secondary" role="button">Created Menu</a>
+        <a onclick="CreatedMenu()" class="btn btn-outline-secondary" role="button">Created Menu</a>
     </div>
     <div class="input-text__name">
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
@@ -236,7 +266,7 @@
     <a onclick="DeleteMenu()" class="btn btn-outline-secondary" role="button">Delete Menu</a>
     <div>
         <a onclick="NameSearch()" class="btn btn-outline-secondary" role="buton">Name Search</a>
-        <a onclick="" class="btn btn-outline-primary" role="button">Empty</a>
+        <a onclick="MenuSearch()" class="btn btn-outline-primary" role="button">Menu Search</a>
         <a onclick="countData()" class="btn btn-outline-primary" role="button">Count</a>
         <a onclick="deleteData()" class="btn btn-outline-primary" role="buton">Delete</a>
     </div>
