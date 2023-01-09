@@ -151,13 +151,30 @@
                     alert("mistake");
                 })
 
-
-
-
-
         }
 
-
+        //新規の名前を登録　デバッグ用に作成する
+        function createName(){
+            let maindata = new Maindata();
+            let createName = $("#createName").val(); //入力された文字列
+            console.log(createName);
+            console.log(createName.length);
+            console.log(key);
+            if(createName.length > 5){
+                alert("入力する名前は5文字以内にしてください");
+            }
+            maindata
+            .set(key, createName)
+            .save()
+            .then(function(results){
+                console.log("success create name");
+            })
+            .catch(function(error){
+                alert("miss create name");
+            })
+            
+            
+        }
 
         function sortData() {
             UTdata.order(k).fetchAll()
@@ -274,6 +291,13 @@
         <input type="text" id="update" placeholder="更新">
         <a onclick="updateData()" class="btn btn-outline-primary" role="button">Update</a>
     </div>
+    <div class="input-text__createname">
+        <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
+        <input type="text"  id="createName" class="input-text js-input-text" placeholder="名前を入力">
+    </div>
+    <a onclick="createName()" class="btn btn-outline-primary" role="button">Create Name</a>
+    
+   
     <div id="display" class="text-light bg-info">
         Results
     </div>

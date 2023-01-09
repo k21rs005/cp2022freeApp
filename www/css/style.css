@@ -11,6 +11,11 @@
   translate: 0px 10px;
 }
 
+.input-text__createname{
+    position: relative;
+    display: inline-block;
+    translate: 0px 10px;
+}
 
 .input-text__dummy {
   display: inline-block;
