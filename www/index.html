@@ -17,7 +17,7 @@
         let key_menu = "menuName";
         const arr_name = [];
         const arr_menu = [];
-        const menu = ["すし", "ゴーヤチャンプル","にくじゃが","いちごだいふく","ちくぜんに","おでん"];
+        const menu = ["すし", "ゴーヤチャンプル", "にくじゃが", "いちごだいふく", "ちくぜんに", "おでん"];
 
         /*
         function enterData() {
@@ -97,11 +97,11 @@
         }
 
         //メニューの表示
-        function MenuSearch(){
+        function MenuSearch() {
             Maindata
-            .fetchAll()
-            .then(function(results){
-            let msg = "";
+                .fetchAll()
+                .then(function(results) {
+                    let msg = "";
                     for (let i = 0; i < results.length; i++) {
                         arr_menu[i] = results[i].get(key_menu);
                     }
@@ -109,7 +109,7 @@
                     const newArr_menu = [...set];
                     console.log(newArr_menu);
                     for (let n = 0; n < newArr_menu.length; n++) {
-                        if(newArr_menu[n] != "　"){
+                        if (newArr_menu[n] != "　") {
                             msg += newArr_menu[n] + "</br>";
                         }
                     }
@@ -127,25 +127,25 @@
         }
 
         //名前の削除
-        function DeleteName(){
+        function DeleteName() {
             let name = $("#name").val();
             console.log(name);
             Maindata
-            .equalTo(key, name)
-            .fetchAll()
-            .then(function(results){
-                let promises = [];
-                for(let i=0; i< results.length; i++){
-                    let object = results[i];
-                    promises.push(object.delete());
-                }
-            })
-            .then(function(results){
-                console.log("delete success");
-            })
-            .catch(function(error){
-                alert("Can't Delete name");
-            })
+                .equalTo(key, name)
+                .fetchAll()
+                .then(function(results) {
+                    let promises = [];
+                    for (let i = 0; i < results.length; i++) {
+                        let object = results[i];
+                        promises.push(object.delete());
+                    }
+                })
+                .then(function(results) {
+                    console.log("delete success");
+                })
+                .catch(function(error) {
+                    alert("Can't Delete name");
+                })
         }
 
         //作成したメニューの削除
@@ -177,30 +177,30 @@
         }
 
         //新規の名前を登録　デバッグ用に作成する
-        function createName(){
+        function createName() {
             let maindata = new Maindata();
             let createName = $("#createName").val(); //入力された文字列
             console.log(createName);
             console.log(createName.length);
             console.log(key);
-            if(createName.length > 5){
+            if (createName.length > 5) {
                 alert("入力する名前は5文字以内にしてください");
                 return;
             }
             maindata
-            .set(key, createName)
-            .set(key_menu, "　")
-            .save()
-            .then(function(results){
-                console.log("success create name");
-            })
-            .catch(function(error){
-                alert("miss create name");
-            })   
+                .set(key, createName)
+                .set(key_menu, "　")
+                .save()
+                .then(function(results) {
+                    console.log("success create name");
+                })
+                .catch(function(error) {
+                    alert("miss create name");
+                })
         }
 
         //新規のメニュー登録　デバッグ用
-        function createMenu(){
+        function createMenu() {
             let maindata = new Maindata();
             let whoCreate = $("#whoCreate").val();
             let whatCreate = $("#whatCreate").val();
@@ -208,28 +208,28 @@
             console.log(whoCreate + ":" + whatCreate);
 
             //入力されたメニューが存在するのかどうかを確認する
-            for(let i=0; i<menu.length; i++){
-                if(menu[i] != whatCreate){
+            for (let i = 0; i < menu.length; i++) {
+                if (menu[i] != whatCreate) {
                     count++;
                 }
             }
             console.log(count);
-            if(count == 6){
+            if (count == 6) {
                 alert("そのメニューはありません");
                 return;
             }
             console.log("OK");
             //ここまで
             maindata
-            .set(key, whoCreate)
-            .set(key_menu, whatCreate)
-            .save()
-            .then(function(results){
-                console.log("success create menu");
-            })
-            .catch(function(error){
-                alert("miss create menu");
-            })
+                .set(key, whoCreate)
+                .set(key_menu, whatCreate)
+                .save()
+                .then(function(results) {
+                    console.log("success create menu");
+                })
+                .catch(function(error) {
+                    alert("miss create menu");
+                })
         }
 
         function sortData() {
@@ -351,13 +351,13 @@
     <a onclick="DeleteMenu()" class="btn btn-outline-secondary" role="button">Delete Menu</a>
     <div class="input-text__createname">
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
-        <input type="text"  id="createName" class="input-text js-input-text" placeholder="名前を入力">
+        <input type="text" id="createName" class="input-text js-input-text" placeholder="名前を入力">
     </div>
     <a onclick="createName()" class="btn btn-outline-primary" role="button">Create Name</a>
     </br>
     <div class="input-text__whoCreate">
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
-        <input type="text" id = "whoCreate" class="input-text js-input-text" placeholder="名前を入力">
+        <input type="text" id="whoCreate" class="input-text js-input-text" placeholder="名前を入力">
     </div>
     <div class="input-text__whatCreate">
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="メニューを入力"></div>
@@ -365,8 +365,8 @@
     </div>
     <a onclick="createMenu()" class="btn btn-outline-primary" role="button">Create Menu</a>
 
-    
-   
+
+
     <div id="display" class="text-light bg-info">
         Results
     </div>
