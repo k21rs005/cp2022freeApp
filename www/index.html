@@ -324,21 +324,22 @@
 
 <body>
     <h1 class="text-light bg-secondary">mbaas update</h1>
+    <div class="input-text__createdName">
+        <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
+        <input type="text" id="Name" class="input-text js-input-text" placeholder="名前を入力">
+    </div>
+    <a onclick="CreatedMenu()" class="btn btn-outline-primary" role="button">作成したメニューを表示</a>
+    </br>
     <div>
-        <input type="text" id="Name" placeholder="名前を入力してください">
-        <a onclick="CreatedMenu()" class="btn btn-outline-secondary" role="button">Created Menu</a>
+        <a onclick="NameSearch()" class="btn btn-outline-secondary" role="buton">Name Search</a>
+        <a onclick="MenuSearch()" class="btn btn-outline-primary" role="button">Menu Search</a>
     </div>
     <div class="input-text__deletename">
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
         <input type="text" id="name" class="input-text js-input-text" placeholder="名前を入力">
     </div>
     <a onclick="DeleteName()" class="btn btn-outline-primary" role="button">Delete Name</a>
-
     </br>
-    <div>
-        <a onclick="NameSearch()" class="btn btn-outline-secondary" role="buton">Name Search</a>
-        <a onclick="MenuSearch()" class="btn btn-outline-primary" role="button">Menu Search</a>
-    </div>
     <div class="input-text__name">
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
         <input type="text" id="who" class="input-text js-input-text" placeholder="名前を入力">

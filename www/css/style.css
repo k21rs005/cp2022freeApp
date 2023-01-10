@@ -1,4 +1,10 @@
 /**/
+.input-text__createdName{
+  position: relative;
+  display: inline-block;
+  translate: 0px 10px;
+}
+
 .input-text__deletename{
     position: relative;
     display: inline-block;
