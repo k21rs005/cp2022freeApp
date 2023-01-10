@@ -172,9 +172,7 @@
             })
             .catch(function(error){
                 alert("miss create name");
-            })
-            
-            
+            })   
         }
 
         function sortData() {
@@ -297,6 +295,17 @@
         <input type="text"  id="createName" class="input-text js-input-text" placeholder="名前を入力">
     </div>
     <a onclick="createName()" class="btn btn-outline-primary" role="button">Create Name</a>
+    </br>
+    <div class="input-text__whoCreate">
+        <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
+        <input type="text" id = "whoCreate" class="input-text js-input-text" placeholder="名前を入力">
+    </div>
+    <div class="input-text__whatCreate">
+        <div class="input-text__dummy js-dummy-input-text" data-placeholder="メニューを入力"></div>
+        <input type="text" id="whatCreate" class="input-text js-input-text" placeholder="メニューを入力">
+    </div>
+    <a onclick="createMenu()" class="btn btn-outline-primary" role="button">Create Menu</a>
+
     
    
     <div id="display" class="text-light bg-info">

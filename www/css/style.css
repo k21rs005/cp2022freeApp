@@ -17,6 +17,18 @@
     translate: 0px 10px;
 }
 
+.input-text__whoCreate{
+    position: relative;
+    display: inline-block;
+    translate: 0px 10px;
+}
+
+.input-text__whatCreate{
+    position: relative;
+    display: inline-block;
+    translate: 0px 10px;
+}
+
 .input-text__dummy {
   display: inline-block;
   overflow: hidden;
