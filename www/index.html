@@ -133,7 +133,19 @@
             Maindata
             .equalTo(key, name)
             .fetchAll()
-            .then
+            .then(function(results){
+                let promises = [];
+                for(let i=0; i< results.length; i++){
+                    let object = results[i];
+                    promises.push(object.delete());
+                }
+            })
+            .then(function(results){
+                console.log("delete success");
+            })
+            .catch(function(error){
+                alert("Can't Delete name");
+            })
         }
 
         //作成したメニューの削除
