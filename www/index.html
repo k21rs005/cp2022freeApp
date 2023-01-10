@@ -17,6 +17,7 @@
         let key_menu = "menuName";
         const arr_name = [];
         const arr_menu = [];
+        const menu = ["すし", "ゴーヤチャンプル","にくじゃが","いちごだいふく","ちくぜんに","おでん"];
 
         /*
         function enterData() {
@@ -125,6 +126,16 @@
                 })
         }
 
+        //名前の削除
+        function DeleteName(){
+            let name = $("#name").val();
+            console.log(name);
+            Maindata
+            .equalTo(key, name)
+            .fetchAll()
+            .then
+        }
+
         //作成したメニューの削除
         function DeleteMenu() {
             let name = $("#who").val();
@@ -162,6 +173,7 @@
             console.log(key);
             if(createName.length > 5){
                 alert("入力する名前は5文字以内にしてください");
+                return;
             }
             maindata
             .set(key, createName)
@@ -173,6 +185,39 @@
             .catch(function(error){
                 alert("miss create name");
             })   
+        }
+
+        //新規のメニュー登録　デバッグ用
+        function createMenu(){
+            let maindata = new Maindata();
+            let whoCreate = $("#whoCreate").val();
+            let whatCreate = $("#whatCreate").val();
+            let count = 0;
+            console.log(whoCreate + ":" + whatCreate);
+
+            //入力されたメニューが存在するのかどうかを確認する
+            for(let i=0; i<menu.length; i++){
+                if(menu[i] != whatCreate){
+                    count++;
+                }
+            }
+            console.log(count);
+            if(count == 6){
+                alert("そのメニューはありません");
+                return;
+            }
+            console.log("OK");
+            //ここまで
+            maindata
+            .set(key, whoCreate)
+            .set(key_menu, whatCreate)
+            .save()
+            .then(function(results){
+                console.log("success create menu");
+            })
+            .catch(function(error){
+                alert("miss create menu");
+            })
         }
 
         function sortData() {
@@ -271,6 +316,17 @@
         <input type="text" id="Name" placeholder="名前を入力してください">
         <a onclick="CreatedMenu()" class="btn btn-outline-secondary" role="button">Created Menu</a>
     </div>
+    <div class="input-text__deletename">
+        <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
+        <input type="text" id="name" class="input-text js-input-text" placeholder="名前を入力">
+    </div>
+    <a onclick="DeleteName()" class="btn btn-outline-primary" role="button">Delete Name</a>
+
+    </br>
+    <div>
+        <a onclick="NameSearch()" class="btn btn-outline-secondary" role="buton">Name Search</a>
+        <a onclick="MenuSearch()" class="btn btn-outline-primary" role="button">Menu Search</a>
+    </div>
     <div class="input-text__name">
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
         <input type="text" id="who" class="input-text js-input-text" placeholder="名前を入力">
@@ -280,16 +336,6 @@
         <input type="text" id="what" class="input-text js-input-text" placeholder="メニューを入力">
     </div>
     <a onclick="DeleteMenu()" class="btn btn-outline-secondary" role="button">Delete Menu</a>
-    <div>
-        <a onclick="NameSearch()" class="btn btn-outline-secondary" role="buton">Name Search</a>
-        <a onclick="MenuSearch()" class="btn btn-outline-primary" role="button">Menu Search</a>
-        <a onclick="countData()" class="btn btn-outline-primary" role="button">Count</a>
-        <a onclick="deleteData()" class="btn btn-outline-primary" role="buton">Delete</a>
-    </div>
-    <div>
-        <input type="text" id="update" placeholder="更新">
-        <a onclick="updateData()" class="btn btn-outline-primary" role="button">Update</a>
-    </div>
     <div class="input-text__createname">
         <div class="input-text__dummy js-dummy-input-text" data-placeholder="名前を入力"></div>
         <input type="text"  id="createName" class="input-text js-input-text" placeholder="名前を入力">
